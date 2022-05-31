@@ -1,0 +1,254 @@
+{% extends 'layouts/base.html'%}
+{% load static %}
+{% block title %}Acceuil{% endblock %}
+{% block link %} <!-- MapBox CDN --><link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />{% endblock %}
+{% block content %}
+
+        <!-- Content -->
+        <div class="row">
+            <!-- Showcase banner -->
+            <section class="bg-dark text-light p-5 p-lg-0 pt-lg-3 text-center text-sm-start">
+                <div class="container">
+                    <div class="d-sm-flex align-items-center justify-content-between">
+                        <div>
+                            <h1>Soyez le <span class="text-orange"> Maître D'Œuvre</span></h1>
+                            <p class="lead my-4">
+                                Nous filtrons à l'entrée les professionnels pour vous proposer le meilleur service effectué par le meilleur professionnel.
+                            </p>
+                            <a href="{% url 'main:demand_creation' %}" class="btn btn-primary btn-lg">Trouver Le Proffesionnel </a>
+                        </div>
+                        <img class="img-fluid w-50 pt-5 d-none d-sm-block" src="{% static 'PMR/images/workers.svg' %}" alt="">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Newsletter-->
+            <section class="background-orange text-light p-5">
+                <div class="container">
+                    <div class="d-md-flex justify-content-between align-items-center">
+                        <h3 class="mb-3 mb-ms-0">Laissez-nous vous contactez</h3>
+                        <div class="input-group news-input">
+                            <input type="email" class="form-control" placeholder="Saisir votre Email" aria-label="Email Input">
+                            <input class="btn btn-dark btn-lg" type="submit" value="Envoyer"></input>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pro Boxes-->
+            <section id="prop" class="p-5">
+                <div class="container">
+                    <div class="row text-center g-4">
+
+                        <div class="col-md">
+                            <div class="card bg-dark text-light">
+                                <div class="card-body text-center">
+                                    <div class="h1 mb-3"><i class="bi bi-laptop"></i></div>
+                                    <h3 class="card-title mb-3">Accessibilité</h3>
+                                    <p class="card-text">
+                                        Disponible 24h/24h et 7j/7 j, nous vous assurons que vous trouverez une solution à votre problème dans les plus brefs délais.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md">
+                            <div class="card bg-secondary text-light">
+                                <div class="card-body text-center">
+                                    <div class="h1 mb-3"><i class="bi bi-shield-check"></i></div>
+                                    <h3 class="card-title mb-3">Assurance</h3>
+                                    <p class="card-text">
+                                        Fini les mauvaises surprises et les professionnelles sournois. Nous mettons un point d'honneur à satisfaire nos utilisateurs et ce même en cas de litige.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md">
+                            <div class="card bg-dark text-light">
+                                <div class="card-body text-center">
+                                    <div class="h1 mb-3"><i class="bi bi-currency-dollar"></i></div>
+                                    <h3 class="card-title mb-3">Gain</h3>
+                                    <p class="card-text">
+                                        Économisez du temps et de l'argent. Concentrez-vous sur ce qui vous passionne ! Nous mettrons à disposition toute notre énergie et notre temps pour vous en faire gagner. 
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+
+            <!-- About 1 -->
+            <section id="construction" class="p-5">
+                <div class="container">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col-md">
+                            <img src="{% static 'PMR/images/construction.svg' %}" alt="" class="img-fluid">
+                        </div>
+                        <div class="col-md p-5">
+                            <h2>Engrangez de Nombreux Travaux</h2>
+                            <p class="lead mt-5">
+                                Vous envisagez des travaux de rénovations ? vous souhaiter faire appel à un professionnel pour accomplir une tâche bien précise .
+                            </p>
+                            <p class="lead">
+                                Que vous soyez une entreprise ou un particulier, trouver la bonne main-d'oeuvre à temps et pas chère relève très souvent du défi à Djibouti. Avec Hel Vous retrouverez le plaisir de bâtir / réparer / créer / rénover
+                            </p>
+                            </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About 2 -->
+            <section id="profesionel" class="p-5 bg-dark text-light">
+                <div class="container">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col-md p-5">
+                            <h2>Trouvez tout Type d'Artisan</h2>
+                            <p class="lead  mt-5">
+                                Notre base de données contient toutes type de professionnel et travailleurs djiboutiens et étrangers. Et elle ne fait que s'élargir !
+                            </p>
+                            <p class="lead">
+                                Vous trouverez sans doute ce que vous cherchez.
+                            </p>
+                        </div>
+                        <div class="col-md">
+                            <img src="{% static 'PMR/images/pro.svg' %}" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Accordion -->
+            <section id="" class="p-5">
+                <div class="container">
+                    <h2 class="text-center mb-4">
+                        Questions Frequentes :
+                    </h2>
+                    <div class="accordion accordion-flush" id="question">
+
+                        <!-- First Item -->
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#question-one" aria-expanded="false" aria-controls="flush-collapseOne">
+                                Qui paye t'on ?
+                            </button>
+                          </h2>
+                          <div id="question-one" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#question">
+                            <div class="accordion-body">
+                                Vous n'aurez qu'à payer une fois et nous nous occuperons de tout le reste ! le payement se fera récolter par nos agents.
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Second Item -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#question-two" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    Si je ne trouve pas ce que je cherche ?
+                              </button>
+                            </h2>
+                            <div id="question-two" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#question">
+                              <div class="accordion-body">
+                                    Pas de problème ! Inscrivez-vous (C'est gratuit) et décrivez-nous votre souhait, nous pourrions peut-être avoir la solution
+                              </div>
+                            </div>
+                          </div>
+
+                        <!-- Third Item -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#question-three" aria-expanded="false" aria-controls="flush-collapseOne">
+                                D'où puis-je faire ma demande ?
+                              </button>
+                            </h2>
+                            <div id="question-three" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#question">
+                              <div class="accordion-body">
+                                  Clickez sur 'Trouver un pro' dans la barre de navigation et suivez les étapes. Nous proposons nos services à Djibouti ville et Balbala.
+                              </div>
+                            </div>
+                          </div>
+
+                      </div>
+                </div>
+            </section>
+
+            <!-- Profiles -->
+            <section class="p-5 background-orange">
+                <div class="container">
+                    <h2 class="text-center text-dark">Nos Pros</h2>
+                    <p class="lead text-center text-white mb-5">
+                        Rechercher parmis nos services, vous trouverez sans doute votre bonheur !
+                    </p>
+                    <div class="row g-4">
+
+                        {% for categorie in categories %}
+                        <!-- Pros -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card profil-container-bg">
+                                <div class="card-body text-center">
+                                    <img src=" {{categorie.category_img.url}} " width="200px" alt="" class="img-fluid rounded-circle mb-3">
+                                    <h3 class="card-title mb-3">{{categorie.category_name}}</h3>
+                                    <p class="card-text">
+                                        {{categorie.category_description}}
+                                    </p>
+                                    <a href=""><i class="bi bi-twitter text-dark mx-1"></i></a>
+                                    <a href=""><i class="bi bi-facebook text-dark mx-1"></i></a>
+                                    <a href=""><i class="bi bi-instagram text-dark mx-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <a href="{% url 'main:all_cat' %}" class="btn btn-dark mt-4"> Voir Tout</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact & Map -->
+            <section class="p-5 bg-dark text-light">
+                <div class="container">
+                    <div class="row g-4">
+
+                        <div class="col-md info-details">
+                            <h2 class="text-center mb-4">Contact Info</h2>
+                            <ul class="lead ul-contact">
+                                <li class="">
+                                    <span class="fw-bold">Localisation Principale :</span> 105 Rue D'Ethiopie, Djibouti
+                                </li>
+                                <li class="">
+                                    <span class="fw-bold">Email :</span> amareh.alibarreh@up-set.co
+                                </li>
+                                <li class="">
+                                    <span class="fw-bold">Telephone :</span> 77 81 07 78
+                                </li>
+                                <li class="">
+                                    <span class="fw-bold">UP-SET :</span> <a href="https://www.up-set.co"> UP-SET</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md pt-5">
+                            <div id="map"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+{% endblock %}
+
+{% block script %}
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYW1hcmVoIiwiYSI6ImNremJkaTMxczBjNmEydW50YndoZHNjZzcifQ.HLoHZZrM8-GqseoW5Ovrsw';
+    var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [43.145645, 11.572076],
+    zoom:11
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'layouts/base.html'%}
+{% load static %}
+{% block title %}Recherche{% endblock %}
+{% block content %}
+        <!-- Search -->
+        <div class="row">
+            <section class="bg-dark text-light text-center pt-3">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="search-div">
+                                <form action="{% url 'main:search' %}" method="GET" class="form-inline">
+                                    <label >Rechercher une categorie: </label>
+                                    <input name="q" class="searchinput searchinputcustom" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                </form>
+                                <div id="filter-btn" class=""><a class="btn btn-light"><i class="bi bi-justify lead"></i>Toutes les Categories</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="filter-container" class="bg-dark text-light text-center pt-3">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4">
+                            {% for ca1 in cat1 %}
+                            <a href="{% url 'main:cat_detail' ca1.category_name %}" class="btn btn-warning col-12">{{ca1.category_name}}</a>
+                            {% endfor %}
+                        </div>
+                      
+                        <div class="col-md-4">
+                            {% for ca2 in cat2 %}
+                            <a href="{% url 'main:cat_detail' ca2.category_name %}" class="btn btn-danger col-12">{{ca2.category_name}}</a>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="col-md-4">
+                            {% for ca3 in cat3 %}
+                            <a href="{% url 'main:cat_detail' ca3.category_name %}" class="btn btn-primary col-12">{{ca3.category_name}}</a>
+                            {% endfor %}
+                        </div>                        
+
+                        {% if pop %}
+                        <a href="{% url 'main:all_cat' %}" class="btn btn-success mt-4"> Voir Tout</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-dark text-light text-center pt-3">
+                <div class="container-fluid dashboard-containerfluid">
+                    <div class="row justify-content-center">
+                        {% if categories != '' %}
+                            {% for categorie in categories %}
+                            <div class="col-md-4">
+                                <div class="jobs-container">
+                                    <div class="col-12 background-orange text-dark m-sm-2 jobs-description">
+                                        <h2>{{categorie.category_name}}</h2>
+                                        <p>{{categorie.category_description}}</p>
+                                        <a href="{% url 'main:cat_detail' categorie.category_name %}" class="btn btn-outline-primary">Voir</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                        <div class="col-md-4 pt-5">
+                            <h2 class="pt-5">Aucune Categories...</h2>
+                            <img class="img-fluid pt-2" src="{% static 'PMR/images/noresult.svg' %}" alt="Aucun resultat">
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </section>
+
+        </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        let btn = document.querySelector('#filter-btn');
+        let container = document.querySelector('#filter-container');
+        let showable = false;
+        function showCategory(){
+            if (showable == true){
+                container.style.display = "none";
+                showable = false;
+            }else {
+                container.style.display = "block";
+                showable = true;
+            }
+        }
+        btn.addEventListener("click", function(){
+            showCategory();
+            console.log("Sa click");
+        }, false);
+    </script>
+{% endblock %}

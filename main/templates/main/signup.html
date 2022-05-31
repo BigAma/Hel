@@ -1,0 +1,79 @@
+{% extends 'layouts/base.html'%}
+{% load static %}
+{% block title %}Inscription{% endblock %}
+{% block content %}
+        <!-- Sign Up -->
+        <div class="row pt-2">
+            <section class="bg-dark text-light text-center pt-3">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-8 mt-5">
+                            <img class="d-none d-md-block img-fluid pt-5" src="{% static 'PMR/images/signup.svg' %}" alt="">
+                        </div>
+    
+                        <div class="col-sm-12 col-md-4">
+                            <div class="login-container">
+                                <h1>Inscription</h1>
+                                <hr>
+
+                                <div>
+                                    
+                                    <form action="{% url 'main:signup' %}" method="POST">
+                                        {% csrf_token %}
+                                        {{ form.non_field_errors }}
+                                        {{ profilform.non_field_errors }}
+                                        <div>
+                                            {{ form.username.errors }}
+                                            <label class="col-12" for="username">Nom d'utilisateur: </label>
+                                            {{ form.username }}
+                                        </div>
+                                        <div>
+                                            {{ form.password1.errors }}
+                                            <label class="col-12" for="password1">Mot de passe: </label>
+                                            {{ form.password1 }}
+                                        </div>
+                                        <div>
+                                            {{ form.password2.errors }}
+                                            <label class="col-12" for="password2">Comfirmer Mot de passe:: </label>
+                                            {{ form.password2 }}
+                                        </div>
+                                        <div>
+                                            {{ profilform.user_nom.errors }}
+                                            <label class="col-12" for="nom">Nom: </label>
+                                            {{ profilform.user_nom }}
+                                        </div>
+                                        <div>
+                                            {{ profilform.user_prenom.errors }}
+                                            <label class="col-12" for="prenom">Prenom: </label>
+                                            {{ profilform.user_prenom }}
+                                        </div>
+                                        <div>
+                                            {{ profilform.user_tel.errors }}
+                                            <label class="col-12" for="telephone">Telephone: </label>
+                                            {{ profilform.user_tel }}
+                                        </div>
+                                        <div>
+                                            {{ profilform.user_email.errors }}
+                                            <label class="col-12" for="email">Email: </label>
+                                            {{ profilform.user_email }}
+                                        </div>
+                                        <div>
+                                            {{ profilform.user_adresse.errors }}
+                                            <label class="col-12" for="adresse">Adresse: </label>
+                                            {{ profilform.user_adresse }}
+                                        </div>
+                                        <div class="pt-3">
+                                            <input type="submit" value="S'inscrire" class="btn btn-success "/>
+                                            <p class="mt-2">Vous avez deja un compte ? <br> <a href="{% url 'main:login' %}">Connectez-vous</a> !</p>
+                                        </div>  
+                                        
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+{% endblock %}

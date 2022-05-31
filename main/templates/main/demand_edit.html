@@ -1,0 +1,30 @@
+{% extends 'layouts/base.html'%}
+{% load crispy_forms_tags %}
+{% block title %}Modifier Demande{% endblock %}
+{% block content %}
+        <!-- Demand Form -->
+        <div class="row">
+            <section class="bg-dark text-light text-center p-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 form-demand-container">
+                            <div class="form-header">
+                                    <div class="form-header-back d-none d-md-block"><a href="{% url 'main:dashboard' %}"><i class="bi bi-arrow-90deg-left"></i></a></div>
+                                    <div><h3>Creez une Demande</h3></div>
+                            </div>
+                            <div>
+                                <form action="{% url 'main:demande_edit' %}" method="POST">
+                                    
+                                    <div class="form-demand-block">
+                                        {% csrf_token %}
+                                        {% crispy form %}
+                                    </div>
+                                 
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+{% endblock %}

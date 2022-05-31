@@ -1,0 +1,26 @@
+{% extends 'layouts/base.html'%}
+{% load crispy_forms_tags %}
+{% block title %}{{ demande.demande_sujet }}{% endblock %}
+{% block content %}
+        <!-- Demand Detail -->
+        <div class="row">
+            <section class="bg-dark text-light text-center p-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 form-demand-container">
+                            <div class="form-header">
+                                    <div class="form-header-back d-none d-md-block"><a href="{% url 'main:dashboard' %}"><i class="bi bi-arrow-90deg-left"></i></a></div>
+                                    <div><h3>Resumer de votre demande</h3></div>
+                            </div>
+                            <div class="detail-container">
+                                <h2>SUJET: {{demande.demande_sujet}}</h2>
+                                <p>DESCRIPTION: {{demande.demande_description}}</p>
+                                <small>Cree le: {{demande.demande_creation}}</small>
+                                <p>Dans la categorie: {{demande.demande_category}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'layouts/base.html'%}
+{% load static %}
+{% block title %}Connexion{% endblock %}
+{% block content %}
+
+        <!-- Login -->
+        <div class="row pt-2">
+            <section class="bg-dark text-light text-center pt-3">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-8">
+                            <img class="d-none d-md-block img-fluid w-100" src="{% static 'PMR/images/login.svg' %}" alt="">
+                        </div>
+    
+                        <div class="col-sm-12 col-md-4">
+                            <div class="login-container">
+                                <h1>Login</h1>
+                                <hr>
+
+                                <form action="{% url 'main:login' %}" method="POST">
+                                    {% csrf_token %}
+                                    <div>                                    
+                                        <div>
+                                            <label class="col-12" for="username">Username: </label>
+                                            <input name="username" type="text" placeholder="Username">
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="col-12" for="username">Password: </label>
+                                            <input name="password" type="password" placeholder="">
+                                        </div>
+        
+                                        <div>
+                                            <input type="submit" class="btn btn-success mt-3" value="Login"/>
+                                            <p class="mt-2">Vous n'avez pas de compte ? <br><a href="{% url 'main:signup' %}">Inscrivez-vous</a> !</p>
+                                        </div>
+                                    </div>                             
+                                </form>       
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+{% endblock %}
+
+
+        

@@ -1,0 +1,105 @@
+{% extends 'layouts/base.html'%}
+{% load static %}
+{% block title %}Profil{% endblock %}
+{% block content %}
+        <!-- Profil -->
+        <div class="row pt-2">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <section class="background-orange text-light text-center pt-3">
+                        <div class="row justify-content-between">
+                            <div class="col-12 profil-top-container">
+                                <div class="profil-top">
+                                    <a class="d-none d-lg-block" href="{% url 'main:profil_edit' %}"><i class="bi bi-journal-plus"> Modifier Profil</i></a>
+                                    <a class="d-block d-lg-none" href="{% url 'main:profil_edit' %}"><i class="bi bi-journal-plus"></i></a>
+                                </div>
+                                <img class="img-fluid rounded-circle" src="static/images/informaticien.jpg" width="200px" alt="">
+                                <h1>{{request.user.username}}</h1>
+                                <p class="text-dark">Description: <br></p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="row justify-content-center">
+                    <section class="bg-dark text-light text-center pt-3">
+                        <div class="row justify-content-center">
+                            <div class="col-md-4">
+                                <h3>Mon Profil:</h3>
+                                <div class="row justify-content-center pb-5">
+                                    <div class="col-md-6">
+                                        <div class="pt-3">
+                                            <label class="col-12" for="username">Nom d'utilisateur: </label>
+                                            <h5 class="text-center pt-1">{{request.user.username}}</h5>
+                                        </div>
+                                    {% for userprofil in userprofile %}
+                                        <div class="pt-3">
+                                            <label class="col-12" for="username">Nom et Prenom: </label>
+                                            <h5 class="text-center pt-1">{{userprofil.user_nom}} {{userprofil.user_prenom}}</h5>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <div class="pt-3">
+                                            <label class="col-12" for="username">Telephone: </label>
+                                            <h5 class="text-center pt-1">{{userprofil.user_tel}}</h5>
+                                        </div>
+                                        <div class="pt-3">
+                                            <label class="col-12" for="username">Email: </label>
+                                            <h5 class="text-center pt-1">{{userprofil.user_email}}</h5>
+                                        </div>
+                                        <div class="pt-3">
+                                            <label class="col-12" for="username">Adresse: </label>
+                                            <h5 class="text-center pt-1">{{userprofil.user_adresse}}</h5>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 pt-5 pt-md-0">
+                                <h3>Mes parametres:</h3>
+                                {% for userprofil in userprofile %}
+                                    {% if userprofil.user_isPro %}
+                                    <div>
+                                        <input type="checkbox" checked disabled>
+                                        <label>Compte Actif</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" checked disabled>
+                                        <label>Proffesionnel</label>
+                                    </div>  
+                                    {% else %}
+                                    <div>
+                                        <input type="checkbox" checked disabled>
+                                        <label>Compte Actif</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" disabled>
+                                        <label>Proffesionnel</label>
+                                    </div>  
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-12 pt-5 pt-md-0">
+                                <h3>Historiques:</h3>
+                                {% for demande in demandes %}
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6 background-orange text-dark m-2 jobs-description">
+                                        <div class="job-status"><h5><strong>Pending</strong></h5></div>
+                                        <h2>{{demande.demande_sujet}}</h2>
+                                        <p>{{demande.demande_description}}</p>
+                                        <p>modifier le {{demande.demande_modification}}</p>
+                                        <a href="{% url 'main:demand_detail' demande.id %}" class="btn btn-outline-primary">> Voir</a>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'layouts/base.html'%}
+{% load static %}
+{% block title %}Toutes les categories{% endblock %}
+{% block content %}
+
+        <!-- All Categories -->
+        <div class="row pt-2">
+            <section class="bg-dark text-light text-center pt-3">
+                <div class="container">
+                    <div class="row justify-content-center">  
+                        <div class="col-sm-12 col-md-8">
+                            <div class="login-container">
+                                <h1>Toutes Nos Catégories</h1>
+                                <hr>
+
+                                <ul>
+                                {% for cat in categories %}
+                                    <a href="{% url 'main:cat_detail' cat.category_name %}" class="btn btn-outline-secondary"><h5>{{ cat.category_name }}</h5></a>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+{% endblock %}
+
+
+        

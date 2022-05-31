@@ -1,0 +1,45 @@
+{% extends 'layouts/base.html'%}
+{% load static %}
+{% block title %}Tableau de Bord{% endblock %}
+{% block content %}
+        <!-- Content -->
+        <div class="row">
+            <section class="bg-dark text-light text-center pt-3">
+                <div class="container-fluid dashboard-containerfluid">
+                    <div class="row">
+                        <div class="col-4 align-self-start left-nav-container d-none d-sm-block">
+                            <div class="left-nav">
+                                <h1>Profil</h1>
+                                <ul>
+                                    <li>{{request.user.username}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 align-self-center">
+                            <h1>Tableau de Bord</h1>
+                            <div class="row justify-content-end">
+                                <div class="col-2">
+                                    <a class="add-commande-dashboard" href="{% url 'main:demand_creation' %}"><h2><i class="bi bi-clipboard-plus"></i></h2> Ajouter une Commande</a>
+                                 </div>
+                            </div>
+                            <div class="jobs-container">
+                                {% for demande in demandes %}
+                                <div class="col-12 background-orange text-dark m-2 jobs-description">
+                                    <div class="job-status"><h5><strong>Pending</strong></h5></div>
+                                    <h2>{{demande.demande_sujet}}</h2>
+                                    <p>{{demande.demande_description}}</p>
+                                    <p>modifier le {{demande.demande_modification}}</p>
+                                    <a href="{% url 'main:demand_detail' demande.id %}" class="btn btn-outline-primary">Voir</a>
+                                    <a href="{% url 'main:demande_edit' demande.demande_sujet %}" class="btn btn-outline-danger">Modifier</a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+{% endblock %}
+
+

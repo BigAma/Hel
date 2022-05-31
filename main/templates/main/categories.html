@@ -1,0 +1,26 @@
+{% extends 'layouts/base.html'%}
+{% load static %}
+{% block title %}Categories | {{categorie.category_name}}{% endblock %}
+{% block content %}
+        <!-- Categorie -->
+        <div class="row justify-content-center bg-dark">
+            <div class="col-8 text-center catDetailInfo background-orange">
+                <div class="row justify-content-center">
+                    <h2 class="pt-5">{{categorie.category_name}}</h2>
+                </div>
+
+                <div class="row justify-content-center">
+                    <p>{{categorie.category_description}}</p>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-5">
+                        <a href="{% url 'main:demand_creation' %}" class="btn btn-outline-secondary">Creez une demande pour cette categorie.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
