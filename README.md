@@ -15,7 +15,6 @@ Configuration for Windows using command lines:
 - Go to repository : cd ../pmr
 - Create a virtual environment : python -m venv [Name]
 - Install Django and all dependencies : pip install requirements
-- Populate database : python manage.py makemigrations
-                     python manage.py migrate
+- Populate database : python manage.py makemigrations then python manage.py migrate
 - Start app : python manage.py runserver
 - Open your browser and go to http://127.0.0.1:8000/
