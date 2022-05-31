@@ -8,7 +8,7 @@ Written in python and on the Django framework, this application allows an entity
 with customers who will authenticate on the platform and create requests for certain categories.
 
 
--------------------------------------------------- To run the app on your laptop --------------------------------------------------
+----------------------------------------------- To run the app on your laptop -----------------------------------------------
 Configuration for Windows using command lines:
 - Install|Update Python on your device: https://www.python.org/downloads/
 - Go to repository: cd ../pmr
